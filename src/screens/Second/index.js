@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {
   Text,
@@ -13,15 +13,7 @@ import { useFormik } from 'formik'
 
 import { getFilms } from '../../store/modules/films/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  TextInput,
-  Avatar,
-  Button,
-  Card,
-  Title,
-  Paragraph
-} from 'react-native-paper'
-import FilmWindow from '../../components/FilmWindow'
+import { TextInput, Button, Card, Title, Paragraph } from 'react-native-paper'
 
 import SelectDropdown from 'react-native-select-dropdown'
 
@@ -34,13 +26,11 @@ const Second = (props) => {
   const filmsSelector = useSelector((state) => state.filmsReducer.films) //По какой то причине изначально становится андевайнед
 
   const searchTitle = props.route.params.searchTitle
-  // const [searchTitle, setSearchLine] = useState(props.route.params.searchTitle)
 
   const options = ['movie', 'series', 'episode']
 
   const formik = useFormik({
     initialValues: {
-      search: props.route.params ? props.route.params.searchTitle : '',
       year: '',
       type: 'movie'
     },
@@ -70,7 +60,6 @@ const Second = (props) => {
         }
       )
     )
-    // console.log(filmsSelector)
   }, [searchTitle, formik.values.year, formik.values.type])
 
   const list = () => {
@@ -175,9 +164,6 @@ const Second = (props) => {
           )}
         </ScrollView>
       </SafeAreaView>
-      {/* {console.log(filmsSelector)} */}
-      {/* {films != null ? <Text>Yes</Text> : <Text>No</Text>} */}
-      {/* {films ? <FilmWindow></FilmWindow> : <Text>No</Text>} */}
     </SafeAreaView>
   )
 }

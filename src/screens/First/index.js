@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react'
 import { Text, SafeAreaView, Image } from 'react-native'
 import styles from './styles'
-import { Formik, useFormik } from 'formik'
+import { useFormik } from 'formik'
 
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
-const First = (props, { navigation }) => {
-  // const searchTitle = props.route.params.searchTitle
-
+const First = (props) => {
   useEffect(() => {
-    console.log(props)
     if (props.route.params) {
       formik.resetForm()
     }
